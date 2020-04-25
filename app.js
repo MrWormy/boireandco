@@ -11,6 +11,14 @@ function getLocaleDateString() {
     return `${year}-${month < 10 ? `0${month}` : month}-${date < 10 ? `0${date}` : date}`;
 }
 
+function getLocaleTimeString(ts) {
+    const d = new Date(ts || Date.now());
+    const h = d.getHours();
+    const m = d.getMinutes();
+
+    return `${h < 10 ? `0${h}` : h}:${m < 10 ? `0${m}` : m}`;
+}
+
 function registerNewGlass() {
     // cannot modify past records
     const now = Date.now();
@@ -49,7 +57,7 @@ function fullGlass(ts) {
     gl.setAttribute('data-ts', ts);
     gl.addEventListener('click', unRegisterGlass, false);
 
-    const gt = document.createTextNode(new Date(ts).toLocaleTimeString().slice(0,5));
+    const gt = document.createTextNode(getLocaleTimeString(ts));
 
     const gc = document.createElement('div');
     gc.className = 'glass-container';
