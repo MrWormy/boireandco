@@ -4,16 +4,19 @@ self.addEventListener('install', function(event) {
             return cache.addAll([
                 './',
                 'index.html',
+                'app.js',
                 'manifest.webmanifest',
                 'favicon.ico',
-                'public/apple-touch-icon.png',
-                'public/style.css',
-                'public/settings.html',
-                'public/settings.css',
-                'public/settings.js',
-                'public/app.js',
-                'public/loading.png',
-                'public/icon144.png'
+                'style/index.css',
+                'config/rico.js',
+                'config/verreplein.png',
+                'config/verrevide.png',
+                'icons/apple-touch-icon.png',
+                'icons/favicon-32x32.png',
+                'icons/favicon-16x16.png',
+                'icons/safari-pinned-tab.svg',
+                'icons/android-chrome-192x192.png',
+                'icons/android-chrome-512x512.png',
             ]);
         })
     );

@@ -1,2 +1,2 @@
-# boireandco
-fun and simple for counting stuff with a goal
+# Ricochet
+fun and simple app for counting stuff with a goal

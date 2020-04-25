@@ -1,20 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-title" content="Ricochets">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="translucent black">
-    <link rel="apple-touch-icon" href="public/apple-touch-icon.png">
-    <link rel="apple-touch-startup-image" href="public/loading.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="application-name" content="Ricochets">
+    <meta name="theme-color" content="#FFE8CB">
+    <title>Ricochets</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="public/style.css">
-    <title>BOIRE & CO</title>
+    <link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
-    <h1>Bienvenue</h1>
-    <div id="content"></div>
-    <a href="public/settings.html">Réglages</a>
-    <script src="public/app.js"></script>
+<div class="content">
+    <div class="wrapper">
+        <div class="infos">
+            <div class="cite">
+                <h2>« La force de l’eau vient de la source »</h2>
+                <footer>Proverbe Persan</footer>
+            </div>
+            <div class="params">
+                <label for="objectif">Objectif journalier : </label>
+                <input type="number" name="objectif" id="objectif" value=8>
+                <br>
+                <label for="objdate">Jour : </label>
+                <input type="date" name="objdate" id="objdate">
+            </div>
+        </div>
+        <div class="glasses">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js')
+            .then(function (reg) {
+                // registration worked
+                console.log('SW Registration succeeded. Scope is ' + reg.scope);
+            }).catch(function (error) {
+            // registration failed
+            console.log('SW Registration failed with ' + error);
+        });
+    }
+</script>
+<script src="config/rico.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
