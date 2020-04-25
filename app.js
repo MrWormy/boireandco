@@ -2,10 +2,19 @@ const glasses = document.querySelector('.glasses');
 const objdate = document.getElementById('objdate');
 const settoday = document.getElementById('settoday');
 
+function getLocaleDateString() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const date = now.getDate();
+
+    return `${year}-${month < 10 ? `0${month}` : month}-${date < 10 ? `0${date}` : date}`;
+}
+
 function registerNewGlass() {
     // cannot modify past records
     const now = Date.now();
-    if (objdate.value === new Date().toISOString().slice(0, 10)) {
+    if (objdate.value === getLocaleDateString()) {
         const sets = getSettings(); // today
         sets.glasses.add(now);
         setSettings(sets);
@@ -15,7 +24,7 @@ function registerNewGlass() {
 
 function unRegisterGlass(e) {
     // cannot modify past records
-    if (objdate.value === new Date().toISOString().slice(0, 10)) {
+    if (objdate.value === getLocaleDateString()) {
         const sets = getSettings(); // today
         sets.glasses.delete(Number(e.target.getAttribute('data-ts')));
         setSettings(sets);
@@ -39,7 +48,7 @@ function fullGlass(ts) {
 }
 
 function setToday() {
-    objdate.value = new Date().toISOString().slice(0, 10);
+    objdate.value = getLocaleDateString();
     objdate.dispatchEvent(new Event('change'));
 }
 
