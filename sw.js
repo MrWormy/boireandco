@@ -1,6 +1,6 @@
 self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open('applicationCache').then(function(cache) {
+        caches.open('ricochetCache').then(function(cache) {
             return cache.addAll([
                 './',
                 'index.html',
@@ -23,13 +23,17 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-    event.respondWith(caches.match(event.request, { ignoreSearch: true }).then(function(response) {
-        // caches.match() always resolves
-        // but in case of success response will have value
-        if (response !== undefined) {
-            return response;
-        } else {
-            return new Response('Unknown component');
-        }
-    }));
+    event.respondWith(caches.open('ricochetCache')
+        .then(cache => cache.match(event.request, { ignoreSearch: true })
+            .then(function(response) {
+                // caches.match() always resolves
+                // but in case of success response will have value
+                if (response !== undefined) {
+                    return response;
+                } else {
+                    return new Response('Unknown component');
+                }
+            })
+        )
+    );
 });
