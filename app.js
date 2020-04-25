@@ -1,5 +1,6 @@
 const glasses = document.querySelector('.glasses');
 const objdate = document.getElementById('objdate');
+const settoday = document.getElementById('settoday');
 
 function registerNewGlass() {
     // cannot modify past records
@@ -12,9 +13,27 @@ function registerNewGlass() {
     }
 }
 
+function unRegisterGlass(e) {
+    // cannot modify past records
+    if (objdate.value === new Date().toISOString().slice(0, 10)) {
+        const sets = getSettings(); // today
+        sets.glasses.delete(Number(e.target.getAttribute('data-ts')));
+        setSettings(sets);
+        displayObj();
+    }
+}
+
 function emptyGlass() {
     const gl = verreVide.cloneNode();
     gl.addEventListener('click', registerNewGlass, false);
+
+    return gl;
+}
+
+function fullGlass(ts) {
+    const gl = verrePlein.cloneNode();
+    gl.setAttribute('data-ts', ts);
+    gl.addEventListener('click', unRegisterGlass, false);
 
     return gl;
 }
@@ -39,7 +58,7 @@ function displayGlasses(sets) {
     const gs = Array.from(glassSet);
     for (let i = 0; i < objectif; i++) {
         if (i < gs.length) {
-            glasses.appendChild(verrePlein.cloneNode());
+            glasses.appendChild(fullGlass(gs[i]));
         } else glasses.appendChild(emptyGlass());
     }
 }
@@ -61,5 +80,6 @@ function displayObj() {
 }
 
 objdate.addEventListener('change', displayObj, false);
+settoday.addEventListener('click', setToday, false);
 
 displayObj();
