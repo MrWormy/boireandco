@@ -10,6 +10,7 @@ body {
 .content {
     display: flex;
     justify-content: center;
+    padding: 6px;
 }
 
 .wrapper {
@@ -41,6 +42,7 @@ body {
 }
 
 .glasses img {
-    width: 6rem;
+    width: 4rem;
+    height: 6.5rem;
     margin: 0.1rem;
 }
