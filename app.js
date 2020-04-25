@@ -36,7 +36,12 @@ function emptyGlass() {
     const gl = verreVide.cloneNode();
     gl.addEventListener('click', registerNewGlass, false);
 
-    return gl;
+    const gc = document.createElement('div');
+    gc.className = 'glass-container';
+
+    gc.appendChild(gl);
+
+    return gc;
 }
 
 function fullGlass(ts) {
@@ -44,7 +49,15 @@ function fullGlass(ts) {
     gl.setAttribute('data-ts', ts);
     gl.addEventListener('click', unRegisterGlass, false);
 
-    return gl;
+    const gt = document.createTextNode(new Date(ts).toLocaleTimeString().slice(0,5));
+
+    const gc = document.createElement('div');
+    gc.className = 'glass-container';
+
+    gc.appendChild(gl);
+    gc.appendChild(gt);
+
+    return gc;
 }
 
 function setToday() {
