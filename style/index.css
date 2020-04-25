@@ -46,3 +46,10 @@ body {
     height: 6.5rem;
     margin: 0.1rem;
 }
+
+@media all and (min-width: 500px){
+    .glasses img {
+        width: 6rem;
+        height: 9.7rem;
+    }
+}
