@@ -43,8 +43,9 @@ function unRegisterGlass(e) {
 }
 
 function extraGlassButton() {
-    const gl = document.createElement('button');
+    const gl = document.createElement('div');
     gl.textContent = '+';
+    gl.className = 'extra-glass';
     gl.addEventListener('click', registerNewGlass, false);
 
     const gc = document.createElement('div');

@@ -50,16 +50,27 @@ body {
     margin-bottom: 4rem;
 }
 
-.glasses img, .glasses button {
+.glasses img, .extra-glass {
     width: 4rem;
     height: 6.5rem;
     margin: 0.1rem;
 }
 
-.glasses button {
+.extra-glass {
     font-size: 4em;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../config/verreplein.png");
+    background-size: 100%;
 }
 
+@media (hover: hover) {
+    .extra-glass:hover {
+        box-shadow: 0.2rem 0.2rem 0.2rem black;
+    }
+}
 .glass-container {
     display: flex;
     flex-direction: column;
@@ -67,7 +78,7 @@ body {
 }
 
 @media all and (min-width: 500px){
-    .glasses img, .glasses button {
+    .glasses img, .extra-glass {
         width: 5rem;
         height: 8.1rem;
     }
