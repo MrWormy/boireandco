@@ -147,6 +147,15 @@ function changeObj() {
         sets.objectif = no;
         setSettings(sets);
         displayObj();
+    } else {
+        let ds = objdate.value;
+        if (ds) {
+            ds = new Date(ds).toLocaleDateString();
+            let settings = getSettings(ds);
+            if (settings) {
+                updateObjectif(settings);
+            }
+        }
     }
 }
 
