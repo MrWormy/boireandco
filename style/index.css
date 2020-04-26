@@ -32,6 +32,15 @@ body {
     padding: 0.5rem;
 }
 
+.obj-success {
+    position: absolute;
+    bottom: 4rem;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
 .cite h2 {
     margin-bottom: 0.5rem;
 }
@@ -41,10 +50,14 @@ body {
     margin-bottom: 4rem;
 }
 
-.glasses img {
+.glasses img, .glasses button {
     width: 4rem;
     height: 6.5rem;
     margin: 0.1rem;
+}
+
+.glasses button {
+    font-size: 4em;
 }
 
 .glass-container {
@@ -54,8 +67,8 @@ body {
 }
 
 @media all and (min-width: 500px){
-    .glasses img {
-        width: 6rem;
-        height: 9.7rem;
+    .glasses img, .glasses button {
+        width: 5rem;
+        height: 8.1rem;
     }
 }

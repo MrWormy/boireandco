@@ -1,4 +1,6 @@
 const glasses = document.querySelector('.glasses');
+const objval = document.getElementById('objectif');
+const objsuccess = document.querySelector('.obj-success');
 const objdate = document.getElementById('objdate');
 const settoday = document.getElementById('settoday');
 
@@ -38,6 +40,19 @@ function unRegisterGlass(e) {
         setSettings(sets);
         displayObj();
     }
+}
+
+function extraGlassButton() {
+    const gl = document.createElement('button');
+    gl.textContent = '+';
+    gl.addEventListener('click', registerNewGlass, false);
+
+    const gc = document.createElement('div');
+    gc.className = 'glass-container';
+
+    gc.appendChild(gl);
+
+    return gc;
 }
 
 function emptyGlass() {
@@ -86,11 +101,25 @@ function displayGlasses(sets) {
     const glassSet = sets.glasses;
     const objectif = sets.objectif;
     const gs = Array.from(glassSet);
-    for (let i = 0; i < objectif; i++) {
+    let empty = false;
+    for (let i = 0; i < Math.max(objectif, gs.length); i++) {
         if (i < gs.length) {
             glasses.appendChild(fullGlass(gs[i]));
-        } else glasses.appendChild(emptyGlass());
+        } else {
+            empty = true;
+            glasses.appendChild(emptyGlass());
+        }
     }
+
+    glasses.appendChild(extraGlassButton());
+
+    if (empty) {
+        objsuccess.classList.add('hidden');
+    } else objsuccess.classList.remove('hidden');
+}
+
+function updateObjectif(settings) {
+    objval.value = settings.objectif;
 }
 
 function displayObj() {
@@ -105,10 +134,23 @@ function displayObj() {
             }
         }
 
+        updateObjectif(settings);
         displayGlasses(settings);
     } else setToday();
 }
 
+function changeObj() {
+    let no = Number(objval.value);
+    // cannot update past or future objects
+    if (!isNaN(no) && no > 0 && objdate.value === getLocaleDateString()) {
+        const sets = getSettings(); // today
+        sets.objectif = no;
+        setSettings(sets);
+        displayObj();
+    }
+}
+
+objval.addEventListener('change', changeObj, false);
 objdate.addEventListener('change', displayObj, false);
 settoday.addEventListener('click', setToday, false);
 

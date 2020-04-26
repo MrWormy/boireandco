@@ -9,6 +9,7 @@ self.addEventListener('install', function(event) {
                 'favicon.ico',
                 'style/index.css',
                 'config/rico.js',
+                'config/objectifok.png',
                 'config/verreplein.png',
                 'config/verrevide.png',
                 'icons/apple-touch-icon.png',
