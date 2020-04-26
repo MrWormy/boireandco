@@ -151,7 +151,7 @@ function changeObj() {
         let ds = objdate.value;
         if (ds) {
             ds = new Date(ds).toLocaleDateString();
-            let settings = getSettings(ds);
+            const settings = getSettings(ds);
             if (settings) {
                 updateObjectif(settings);
             }
