@@ -143,7 +143,7 @@ function displayObj() {
 function changeObj() {
     let no = Number(objval.value);
     // cannot update past or future objects
-    if (!isNaN(no) && no > 0 && objdate.value === getLocaleDateString()) {
+    if (!isNaN(no) && no > 0 && no < 51 && objdate.value === getLocaleDateString()) {
         const sets = getSettings(); // today
         sets.objectif = no;
         setSettings(sets);
