@@ -7,7 +7,7 @@ verrePlein.src = 'config/verreplein.png';
 verreVide.src = 'config/verrevide.png';
 
 const defaultSettings = {
-    objectif: 10
+    objectif: 4
 };
 
 function getKeyFromDS(ds) {
